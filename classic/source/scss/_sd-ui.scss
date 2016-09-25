@@ -1,0 +1,455 @@
+//  SD UI Classic Theme Foundation
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Custom Classes
+//   2. Typography
+//   3. Accordion
+//   4. Breadcrumbs
+//   5. Buttons
+//   6. Drilldown
+//   7. Dropdown Menu
+//   8. Menu
+//   9. Orbit
+//   10. Switch
+//   11. Table
+//   12. Tabs
+//   13. Top Bar
+
+
+// 1. Custom Classes
+// ---------
+
+$blockquote-bg: #f9f9f9;
+
+@media screen {
+  * {
+    outline: none;
+  }
+}
+
+.boxed {
+  border: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 0px 0px 1px rgba(0, 0, 0, 0.05);
+}
+
+.highlighted {
+  color: $primary-color;
+}
+
+// 2. Typography
+// ---------
+
+blockquote {
+  background: $blockquote-bg;
+}
+
+p {
+  &.primary {
+    color: $primary-color;
+  }
+  &.secondary {
+    color: $secondary-color;
+  }
+  &.success {
+    color: $success-color;
+  }
+  &.warning {
+    color: $warning-color;
+  }
+  &.alert {
+    color: $alert-color;
+  }
+
+}
+
+dl {
+  dd {
+    margin-bottom: $paragraph-margin-bottom;
+  }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// 3. Accordion
+// ---------
+
+.accordion {
+  border-bottom-width: 0;
+  .accordion-item {
+    background: $white;
+    &.is-active {
+      background: #fafdff;
+      .accordion-title {
+        color: $black;
+      }
+    }
+  }
+  :last-child > .accordion-title {
+    border-bottom-width: 1px;
+  }
+  .accordion-title {
+    font-size: 1rem;
+  }
+}
+
+// 4. Breadcrumbs
+// ---------
+
+.breadcrumbs {
+  padding: 0.5rem 1rem;
+  border-radius: $global-radius;
+  border: 1px solid $light-gray;
+  background: whitesmoke;
+}
+
+// 4. Buttons
+// ---------
+
+.button, button, input[type="submit"] {
+  &.white {
+    @include button-style($white, scale-color($white, $lightness: -3%), #333333);
+    border: 1px solid $light-gray;
+    font-weight: normal;
+  }
+  &.dark {
+    @include button-style($dark-gray, scale-color($dark-gray, $lightness: -8%), $white);
+  }
+}
+
+// 6. Drilldown
+// ---------
+
+.is-drilldown {
+  border-bottom: 1px solid $light-gray;
+  border-radius: 0 0 $global-radius $global-radius;
+}
+
+.js-drilldown-back::before {
+  margin-top: 1rem;
+  padding: 0;
+}
+
+// 7. Dropdown Menu
+// ---------
+
+.dropdown.menu {
+  .has-submenu.is-down-arrow > a::after {
+    top: 17px;
+    right: 10px;
+  }
+  .submenu {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    &.first-sub {
+      left: -1px;
+    }
+  }
+  &.vertical > li.opens-right > .is-dropdown-submenu {
+    right: auto;
+    left: 100%;
+    top:-1px;
+  }
+}
+
+
+.input-group {
+  .input-group-label {
+    border-radius: $global-radius 0 0 $global-radius;
+  }
+  .input-group-field {
+    border-radius: 0;
+  }
+  .input-group-button .button {
+    border-radius: 0 $global-radius $global-radius 0;
+    margin: 0;
+  }
+}
+
+// 8. Menu
+// ---------
+
+.menu {
+  border: 1px solid $light-gray;
+  border-radius: $global-radius;
+  display: inline-block;
+  * {
+    outline: none;
+  }
+  > li {
+    border-right: 1px solid $light-gray;
+    &:last-child {
+      border-bottom: none;
+      border-right: none;
+    }
+    > a > i {
+      vertical-align: top;
+    }
+    a:hover {
+      background: lighten($light-gray, 5%);
+    }
+    &:first-child > a {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+    &:last-child > a {
+      border-radius: 0 $global-radius $global-radius 0;
+    }
+    &.active > a {
+      background: lighten($light-gray, 5%);
+      color: $black;
+    }
+  }
+  &.vertical {
+    display: block;
+    > li {
+      border-right: 0;
+      border-bottom: 1px solid $light-gray;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &.nested {
+      background: #fff;
+      border-width: 1px 0 0 0;
+    }
+    > li:first-child > a {
+      border-radius: $global-radius $global-radius 0 0;
+    }
+    > li:last-child > a {
+      border-radius: 0 0 $global-radius $global-radius;
+    }
+  }
+}
+
+.unstyled-menu {
+  @include menu-base;
+}
+
+// 9. Orbit
+// ---------
+
+@media screen {
+  .orbit * {
+    outline: none;
+  }
+}
+.orbit {
+  &.bullets-inside {
+    .orbit-caption {
+      padding-bottom: 2.5rem;
+    }
+    .orbit-bullets {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 0;
+      button {
+        background-color:#fff;
+        opacity: 0.35;
+        transition: opacity 0.3s ease-out;
+        &.is-active {
+          opacity: 0.9;
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+        &:hover {
+          opacity: 0.25;
+        }
+      }
+    }
+  }
+}
+
+// 10. Switch
+// ---------
+
+.switch {
+  .switch-paddle {
+    border-radius: 1rem;
+    &::after {
+      border-radius: 0.75rem;
+    }
+  }
+  &.tiny {
+    .switch-paddle {
+      border-radius: 0.75rem;
+      &::after {
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  &.small {
+    .switch-paddle {
+      border-radius: 0.875rem;
+      &::after {
+        border-radius: 0.625rem;
+      }
+    }
+  }
+  &.large {
+    .switch-paddle {
+      border-radius: 1.25rem;
+      &::after {
+        border-radius: 1.25rem;
+      }
+    }
+  }
+}
+
+// 11. Table
+// ---------
+
+table {
+  tr {
+    &:nth-child(even) {
+      background: none;
+    }
+    &.primary {
+      background: lighten($primary-color, +45%);
+    }
+    &.success {
+      background: lighten($success-color, +55%);
+    }
+    &.warning {
+      background: lighten($warning-color, 45%);
+    }
+    &.alert {
+      background: lighten($alert-color, +35%);
+    }
+  }
+}
+
+// 12. Tabs
+// ---------
+
+.tabs {
+  border-width: 0 0 1px 0;
+  .tabs-title {
+    border-top-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
+    > a {
+      font-size: 1rem;
+    }
+    &.is-active {
+      > a {
+        color: $dark-gray;
+      }
+      border: 1px solid $light-gray;
+      border-bottom-width: 0;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+// 13. Top Bar
+// ---------
+
+.title-bar {
+  background: darken($primary-color, 3%);
+  &.dark-blue {
+    background: darken($primary-color, 20%);
+  }
+}
+
+.top-bar {
+  color: #fff;
+  border-bottom: 1px solid darken($primary-color, 10%);
+  ul {
+    background: transparent;
+  }
+  .top-bar-inner {
+    padding: 0.3rem 0 0.2rem 1rem;
+  }
+  .top-bar-text {
+    padding: 0;
+    @include breakpoint(medium up) {
+      line-height: 2.5rem;
+    }
+  }
+  .menu {
+    border: 0;
+    border-radius: 0;
+    display: block;
+    * {
+      outline: none;
+    }
+    > li {
+      border-right: 0;
+      a {
+        color: #fff;
+        padding: 1rem;
+        &:hover {
+          background: darken($primary-color, 8%);
+        }
+      }
+      &.menu-text {
+        padding:1rem;
+      }
+      &:first-child > a {
+        border-radius: 0;
+      }
+      &:last-child > a {
+        border-radius: 0;
+      }
+      &.active > a {
+        background: darken($primary-color, 8%);
+
+      }
+    }
+    &.dropdown {
+      .submenu {
+        &.vertical > li.opens-right > .is-dropdown-submenu {
+          top:-1px;
+        }
+        &.first-sub {
+          left: 0;
+        }
+        background:darken($primary-color, 3%);
+        border-color: darken($primary-color, 10%);
+        li {
+          border-color: darken($primary-color, 10%);
+        }
+      }
+      .has-submenu.is-down-arrow > a::after {
+        border-color: $white transparent transparent;
+        top: 20px;
+      }
+      .has-submenu.is-right-arrow > a::after {
+        border-color: transparent transparent transparent $white;
+      }
+    }
+  }
+  input, button.white {
+    border: 0;
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  &.dark-blue {
+    background: darken($primary-color, 20%);
+    border-bottom: 1px solid darken($primary-color, 27%);
+    .menu {
+      > li {
+        a {
+          &:hover {
+            background: darken($primary-color, 25%);
+          }
+        }
+        &.active > a {
+          background: darken($primary-color, 25%);
+        }
+      }
+      &.dropdown {
+        .submenu {
+          background:darken($primary-color, 20%);
+          border-color: darken($primary-color, 27%);
+          li {
+            border-color: darken($primary-color, 27%);
+          }
+        }
+      }
+    }
+  }
+}
