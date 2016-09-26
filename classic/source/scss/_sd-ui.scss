@@ -128,8 +128,9 @@ dl {
   border-radius: 0 0 $global-radius $global-radius;
 }
 
-.js-drilldown-back::before {
-  margin-top: 1rem;
+.js-drilldown-back::before,
+.js-drilldown-back>a:before {
+  margin-top: -0.25rem;
   padding: 0;
 }
 
@@ -137,21 +138,30 @@ dl {
 // ---------
 
 .dropdown.menu {
-  .has-submenu.is-down-arrow > a::after {
-    top: 17px;
-    right: 10px;
+  .has-submenu.is-down-arrow > a::after,
+  >li.is-dropdown-submenu-parent>a:after {
+    right: 8px;
   }
   .submenu {
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    &.first-sub {
-      left: -1px;
-    }
   }
   &.vertical > li.opens-right > .is-dropdown-submenu {
     right: auto;
     left: 100%;
     top:-1px;
   }
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent $white;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent $white;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-left>a:after {
+  border-color: transparent $white transparent transparent;
 }
 
 
@@ -174,7 +184,6 @@ dl {
 .menu {
   border: 1px solid $light-gray;
   border-radius: $global-radius;
-  display: inline-block;
   * {
     outline: none;
   }
@@ -202,7 +211,7 @@ dl {
     }
   }
   &.vertical {
-    display: block;
+    //display: block;
     > li {
       border-right: 0;
       border-bottom: 1px solid $light-gray;
@@ -303,7 +312,7 @@ dl {
 // ---------
 
 table {
-  tr {
+  tbody tr {
     &:nth-child(even) {
       background: none;
     }
@@ -372,7 +381,7 @@ table {
   .menu {
     border: 0;
     border-radius: 0;
-    display: block;
+    //display: block;
     * {
       outline: none;
     }
@@ -401,21 +410,18 @@ table {
     }
     &.dropdown {
       .submenu {
-        &.vertical > li.opens-right > .is-dropdown-submenu {
-          top:-1px;
-        }
         &.first-sub {
           left: 0;
         }
         background:darken($primary-color, 3%);
-        border-color: darken($primary-color, 10%);
+        border: 1px solid darken($primary-color, 10%);
         li {
           border-color: darken($primary-color, 10%);
         }
       }
-      .has-submenu.is-down-arrow > a::after {
+      .has-submenu.is-down-arrow > a::after,
+      >li.is-dropdown-submenu-parent>a:after {
         border-color: $white transparent transparent;
-        top: 20px;
       }
       .has-submenu.is-right-arrow > a::after {
         border-color: transparent transparent transparent $white;
@@ -426,6 +432,10 @@ table {
     border: 0;
     display: inline-block;
     margin-bottom: 0;
+
+  }
+  input {
+    margin-right: 2rem;
   }
   &.dark-blue {
     background: darken($primary-color, 20%);
@@ -444,7 +454,7 @@ table {
       &.dropdown {
         .submenu {
           background:darken($primary-color, 20%);
-          border-color: darken($primary-color, 27%);
+          border:1px solid darken($primary-color, 27%);
           li {
             border-color: darken($primary-color, 27%);
           }
