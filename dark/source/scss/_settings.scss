@@ -46,6 +46,13 @@
 $global-width: rem-calc(1200);
 $global-font-size: 100%;
 $global-lineheight: 1.5;
+$foundation-palette: (
+        primary: #fff,
+        secondary: #888,
+        success: #13c25c,
+        warning: #ffae00,
+        alert: #ec5840,
+);
 $primary-color: #fff;
 $secondary-color: #888;
 $success-color: #13c25c;
@@ -228,7 +235,7 @@ $button-margin: 0 $global-margin $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
-$button-color: #fff;
+$button-color: #333;
 $button-color-alt: #000;
 $button-radius: $global-radius;
 $button-sizes: (

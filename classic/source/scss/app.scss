@@ -1,6 +1,5 @@
 @import "settings";
 @import "foundation";
-@import "sd-ui";
 
 /// include all modules of foundation
 @include foundation-everything;
@@ -41,3 +40,5 @@
 // @include foundation-title-bar;
 // @include foundation-tooltip;
 // @include foundation-top-bar;
+
+@import "sd-ui";

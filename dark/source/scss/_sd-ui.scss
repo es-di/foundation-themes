@@ -129,7 +129,7 @@ select {
 
 .button, button, input[type="submit"] {
   &.blue {
-    @include button-style($blue-color, scale-color($blue-color, $lightness: -8%), #333333);
+    @include button-style($blue-color, scale-color($blue-color, $lightness: -8%), $white);
     border: 0;
     font-weight: normal;
   }
@@ -144,6 +144,10 @@ select {
   }
   &.dropdown::after {
     border-color: $body-font-color transparent transparent;
+  }
+  &.success,&.warning,&.alert,
+  &.secondary {
+    color: #fff;
   }
 }
 
@@ -164,8 +168,9 @@ select {
   border-radius: 0 0 $global-radius $global-radius;
 }
 
-.js-drilldown-back::before {
-  margin-top: 1rem;
+.js-drilldown-back::before,
+.js-drilldown-back>a:before {
+  margin-top: -0.25rem;
   padding: 0;
 }
 
@@ -173,15 +178,12 @@ select {
 // ---------
 
 .dropdown.menu {
-  .has-submenu.is-down-arrow > a::after {
-    top: 17px;
-    right: 10px;
+  .has-submenu.is-down-arrow > a::after,
+  >li.is-dropdown-submenu-parent>a:after {
+    right: 8px;
   }
   .submenu {
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    &.first-sub {
-      left: -1px;
-    }
   }
   &.vertical > li.opens-right > .is-dropdown-submenu {
     right: auto;
@@ -189,7 +191,6 @@ select {
     top:-1px;
   }
 }
-
 
 .input-group {
   .input-group-label {
@@ -214,7 +215,7 @@ select {
   border: 1px solid $black;
   border-radius: $global-radius;
   background: #1e1e1e;
-  display: inline-block;
+  //display: inline-block;
   * {
     outline: none;
   }
@@ -241,7 +242,7 @@ select {
     }
   }
   &.vertical {
-    display: block;
+    //display: block;
     > li {
       border-right: 0;
       border-bottom: 1px solid $black;
@@ -350,7 +351,7 @@ input:checked ~ .switch-paddle::after {
 // ---------
 
 table {
-  tr {
+  tbody tr {
     &:nth-child(even) {
       background: none;
     }
@@ -422,7 +423,7 @@ table {
   .menu {
     border: 0;
     border-radius: 0;
-    display: block;
+    //display: block;
     * {
       outline: none;
     }
@@ -451,14 +452,11 @@ table {
     }
     &.dropdown {
       .submenu {
-        &.vertical > li.opens-right > .is-dropdown-submenu {
-          top:-1px;
-        }
         &.first-sub {
           left: 0;
         }
         background: #1e1e1e;
-        border-color: $black;
+        border: 1px solid $black;
         box-shadow: 0 3px 3px rgba(0,0,0,0.3);
         li {
           border-color: $black;
@@ -477,6 +475,7 @@ table {
     display: inline-block;
     margin-bottom: 0;
     background: rgba(0,0,0,0.2);
+    margin-right: 2rem;
   }
   .button {
     border: 0;
@@ -497,7 +496,7 @@ table {
       &.dropdown {
         .submenu {
           background: $black;
-          border-color: lighten($black,5%);
+          border: 1px solid lighten($black,5%);
           li {
             border-color: lighten($black,5%);
           }
