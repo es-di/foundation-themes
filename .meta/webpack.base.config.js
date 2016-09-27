@@ -114,8 +114,7 @@ module.exports = {
   ],
   sassLoader: {
     includePaths: [
-      path.resolve(node_modules_path, "foundation-sites/scss"),
-      path.resolve(node_modules_path, "motion-ui/src"),
+      path.resolve(node_modules_path, "foundation-sites/scss")
     ]
   }
 };
