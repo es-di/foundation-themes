@@ -2,6 +2,7 @@ var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 var fs = require('fs');
+var node_modules_path = path.resolve(__dirname, "../node_modules");
 
 var root = path.join(__dirname, "..");
 
@@ -110,5 +111,10 @@ module.exports = {
   ],
   plugins: [
     new ExtractTextPlugin("foundation.css")
-  ]
+  ],
+  sassLoader: {
+    includePaths: [
+      path.resolve(node_modules_path, "foundation-sites/scss")
+    ]
+  }
 };
