@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --progress --hide-modules --config .meta/webpack.dev.config.js",
-    "build": "webpack --progress --hide-modules --config .meta/webpack.prod.config.js --display-error-details"
-  },
-  "start": {
-    "server": "webpack-dev-server --inline --hot --config .meta/webpack.dev.config.js"
+    "build": "webpack --progress --hide-modules  --display-error-details --config .meta/webpack.prod.config.js",
+    "server": "webpack-dev-server --hide-modules --inline --display-error-details --config .meta/webpack.dev.config.js"
   },
   "repository": {
     "type": "git",

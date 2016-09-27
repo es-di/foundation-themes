@@ -34,13 +34,15 @@ var THEME = getThemeName() || 'classic';
 
 console.log("Theme \"" + THEME + "\" is building");
 
-var theme_root = path.join(root, THEME);
+var themeRoot = path.join(root, THEME);
 
 module.exports = {
-  entry: path.join(theme_root, 'source/index.js'),
+  __themeRoot: themeRoot,   // private var is used in dev config
+
+  entry: './index.js',
+  context: path.join(themeRoot, '/source/'),
   output: {
-    path: path.join(theme_root, 'dist'),
-    //publicPath: '/',
+    path: path.join(themeRoot, 'dist'),
     filename: 'foundation.js'
   },
   resolve: {
@@ -76,6 +78,18 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!postcss-loader!sass?precision=8")
       },
+      //{
+      //  test: /\.css$/,
+      //  loader: 'style-loader!css-loader?root=' + themeRoot + '&sourceMap!postcss-loader!sass-loader?sourceMap&sourceMapContents&precision=8&indentedSyntax'
+      //},
+      //{
+      //  test: /\.sass$/,
+      //  loader: 'style-loader!css-loader?root=' + themeRoot + '&sourceMap!postcss-loader!sass-loader?sourceMap&sourceMapContents&precision=8&indentedSyntax'
+      //},
+      //{
+      //  test: /\.scss$/,
+      //  loader: 'style-loader!css-loader?root=' + themeRoot + '&sourceMap!postcss-loader!sass-loader?sourceMap&sourceMapContents&precision=8&indentedSyntax'
+      //},
       {
         // edit this for additional asset file types
         test: /\.(png|jpe?g|gif)$/i,
