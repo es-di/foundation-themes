@@ -1,5 +1,5 @@
 @import "settings";
-@import "foundation";
+@import "~foundation-sites/scss/foundation";
 
 /// include all modules of foundation
 @include foundation-everything;
