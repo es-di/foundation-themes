@@ -88,6 +88,9 @@ dl {
       }
     }
   }
+  .accordion-content {
+    color: $body-font-color;
+  }
   :last-child > .accordion-title {
     border-bottom-width: 1px;
   }
