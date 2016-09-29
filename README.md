@@ -9,6 +9,7 @@ List of themes
 -----
 - [Classic](http://es-di.com/sdcontent/foundation/classic/) - Clean light-blue theme 
 - [Dark](http://es-di.com/sdcontent/foundation/dark/) - Clean Dark UI
+- [Gradient](http://es-di.com/sdcontent/foundation/gradient/) - Clean blue theme with gradients
 - Coming soon...
 
 Basic usage 
