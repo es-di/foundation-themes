@@ -1,0 +1,619 @@
+//  SD UI Gradient Theme Foundation
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   0. Mixins & additional variables
+//   1. Custom Classes
+//   2. Typography
+//   3. Accordion
+//   4. Breadcrumbs
+//   5. Buttons
+//   6. Callout
+//   7. Drilldown
+//   8. Dropdown Menu
+//   9. Menu
+//   10. Orbit
+//   11. Switch
+//   12. Table
+//   13. Tabs
+//   14. Top Bar
+
+// 0. Mixins & additional variables
+// ---------
+
+$gradient-light-grey-color: #f6f6f6;
+$gradient-primary-color: darken($primary-color,8%);
+$gradient-success-color: darken($success-color,8%);
+$gradient-alert-color: darken($alert-color,10%);
+
+$blockquote-bg: #f9f9f9;
+
+@mixin sd-linear-gradient($gradient-color1, $gradient-color2) {
+  background-image: -webkit-linear-gradient(top, $gradient-color1, $gradient-color2);
+  background-image:    -moz-linear-gradient(top, $gradient-color1, $gradient-color2);
+  background-image:      -o-linear-gradient(top, $gradient-color1, $gradient-color2);
+  background-image:         linear-gradient(to bottom, $gradient-color1, $gradient-color2);
+}
+
+@mixin sd-linear-angle-gradient($gradient-color1, $gradient-color2) {
+  background-image: -webkit-linear-gradient(135deg, $gradient-color1, $gradient-color2);
+  background-image:    -moz-linear-gradient(135deg, $gradient-color1, $gradient-color2);
+  background-image:      -o-linear-gradient(135deg, $gradient-color1, $gradient-color2);
+  background-image:         linear-gradient(135deg, $gradient-color1, $gradient-color2);
+}
+
+
+// 1. Custom Classes
+// ---------
+
+@media screen {
+  * {
+    outline: none;
+  }
+}
+
+.highlighted {
+  color: $primary-color;
+  background: linear-gradient(135deg, darken($primary-color,7%) 0%, lighten($primary-color,7%), darken($primary-color,7%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.gradient {
+  @include sd-linear-gradient($primary-color, $gradient-primary-color);
+}
+
+.angle-gradient {
+  @include sd-linear-angle-gradient($primary-color, $gradient-primary-color);
+}
+
+// 2. Typography
+// ---------
+
+blockquote {
+  background: $blockquote-bg;
+}
+
+code {
+  border-radius: $global-radius;
+}
+
+p {
+  &.primary {
+    color: $primary-color;
+  }
+  &.secondary {
+    color: $secondary-color;
+  }
+  &.success {
+    color: $success-color;
+  }
+  &.warning {
+    color: $warning-color;
+  }
+  &.alert {
+    color: $alert-color;
+  }
+
+}
+
+dl {
+  dd {
+    margin-bottom: $paragraph-margin-bottom;
+  }
+}
+
+.subheader {
+  font-weight: 300;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// 3. Accordion
+// ---------
+
+.accordion {
+  border-bottom-width: 0;
+  .accordion-item {
+    background: $white;
+    &.is-active {
+      background: #fafdff;
+      .accordion-title {
+        color: $black;
+      }
+    }
+  }
+  .accordion-content {
+    color: $body-font-color;
+  }
+  :last-child > .accordion-title {
+    border-bottom-width: 1px;
+  }
+  .accordion-title {
+    font-size: 1rem;
+  }
+}
+
+// 4. Breadcrumbs
+// ---------
+
+.breadcrumbs {
+  padding: 0.5rem 1rem;
+  border-radius: $global-radius;
+  border: 1px solid #f1f1f1;
+  @include sd-linear-gradient($white, #f9f9f9);
+}
+
+// 4. Buttons
+// ---------
+
+.button {
+  border: 1px solid darken($primary-color,5%);
+  @include sd-linear-gradient($primary-color, $gradient-primary-color);
+  &:hover {
+    @include sd-linear-angle-gradient($primary-color, $gradient-primary-color);
+  }
+  &.secondary {
+    border-color: darken($secondary-color,5%);
+    @include sd-linear-gradient($secondary-color, darken($secondary-color,10%));
+    &:hover {
+      @include sd-linear-angle-gradient($secondary-color, darken($secondary-color,10%));
+    }
+  }
+  &.dark {
+    @include sd-linear-gradient($dark-gray, darken($dark-gray,10%));
+    &:hover {
+      @include sd-linear-angle-gradient($dark-gray, darken($dark-gray,10%));
+    }
+  }
+  &.white {
+    @include sd-linear-gradient($white, $gradient-light-grey-color);
+    &:hover {
+      @include sd-linear-angle-gradient($white, $gradient-light-grey-color);
+    }
+  }
+  &.success {
+    border-color: darken($success-color,5%);
+    @include sd-linear-gradient($success-color, $gradient-success-color);
+    &:hover {
+      @include sd-linear-angle-gradient($success-color, $gradient-success-color);
+    }
+  }
+  &.warning {
+    border-color: darken($warning-color,5%);
+    @include sd-linear-gradient($warning-color, $alert-color);
+    &:hover {
+      @include sd-linear-angle-gradient($warning-color, $alert-color);
+    }
+  }
+  &.alert {
+    border-color: darken($alert-color,5%);
+    @include sd-linear-gradient($alert-color, $gradient-alert-color);
+    &:hover {
+      @include sd-linear-angle-gradient($alert-color, $gradient-alert-color);
+    }
+  }
+}
+
+.button, button, input[type="submit"] {
+  &.white {
+    @include button-style($white, scale-color($white, $lightness: -3%), #333333);
+    border: 1px solid $light-gray;
+    font-weight: normal;
+  }
+  &.dark {
+    @include button-style($dark-gray, scale-color($dark-gray, $lightness: -8%), $white);
+    border-color: darken($dark-gray,5%);
+  }
+  &.alert {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
+  &.hollow {
+    background: transparent;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+
+// 6. Callout
+// ---------
+
+.callout {
+  color: $body-font-color;
+  @include sd-linear-gradient($white , $gradient-light-grey-color);
+  &.angle-gradient {
+    @include sd-linear-angle-gradient($white , $gradient-light-grey-color);
+  }
+  &.primary {
+    @include sd-linear-gradient($primary-color, $gradient-primary-color);
+    border-color: darken($primary-color,6%);
+    color: $white;
+    &.angle-gradient {
+      @include sd-linear-angle-gradient($primary-color, $gradient-primary-color);
+    }
+  }
+  &.success {
+    @include sd-linear-gradient($success-color, $gradient-success-color);
+    border-color: darken($success-color,6%);
+    color: $white;
+    &.angle-gradient {
+      @include sd-linear-angle-gradient($success-color, $gradient-success-color);
+    }
+  }
+  &.secondary {
+    @include sd-linear-gradient($secondary-color, darken($secondary-color,10%));
+    border-color: darken($secondary-color,6%);
+    color: $white;
+    &.angle-gradient {
+      @include sd-linear-angle-gradient($secondary-color, darken($secondary-color,10%));
+    }
+  }
+  &.warning {
+    @include sd-linear-gradient($warning-color, $alert-color);
+    border-color: darken($warning-color,6%);
+    color: $white;
+    &.angle-gradient {
+      @include sd-linear-angle-gradient($warning-color, $alert-color);
+    }
+  }
+  &.alert {
+    @include sd-linear-gradient($alert-color, $gradient-alert-color);
+    border-color: darken($alert-color,6%);
+    color: $white;
+    &.angle-gradient {
+      @include sd-linear-angle-gradient($alert-color, $gradient-alert-color);
+    }
+  }
+}
+
+// 7. Drilldown
+// ---------
+
+.is-drilldown {
+  border-bottom: 1px solid $light-gray;
+  border-radius: 0 0 $global-radius $global-radius;
+}
+
+.js-drilldown-back::before,
+.js-drilldown-back>a:before {
+  margin-top: -0.25rem;
+  padding: 0;
+}
+
+// 8. Dropdown Menu
+// ---------
+
+.dropdown.menu {
+  .has-submenu.is-down-arrow > a::after,
+  >li.is-dropdown-submenu-parent>a:after {
+    right: 8px;
+  }
+  .submenu {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  &.vertical > li.opens-right > .is-dropdown-submenu {
+    right: auto;
+    left: 100%;
+    top:-1px;
+  }
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent $white;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent $white;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-left>a:after {
+  border-color: transparent $white transparent transparent;
+}
+
+
+.input-group {
+  .input-group-label {
+    border-radius: $global-radius 0 0 $global-radius;
+  }
+  .input-group-field {
+    border-radius: 0;
+  }
+  .input-group-button .button {
+    border-radius: 0 $global-radius $global-radius 0;
+    margin: 0;
+  }
+}
+
+// 9. Menu
+// ---------
+
+.menu {
+  border: 1px solid $light-gray;
+  border-radius: $global-radius;
+  @include sd-linear-gradient($white, #f9f9f9);
+  * {
+    outline: none;
+  }
+  > li {
+    border-right: 1px solid $light-gray;
+    &:last-child {
+      border-bottom: none;
+      border-right: none;
+    }
+    > a > i {
+      vertical-align: top;
+    }
+    a:hover {
+      background: lighten($light-gray, 5%);
+    }
+    &:first-child > a {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+    &:last-child > a {
+      border-radius: 0 $global-radius $global-radius 0;
+    }
+    &.active > a {
+      background: lighten($light-gray, 5%);
+      color: $black;
+    }
+  }
+  &.vertical {
+    //display: block;
+    > li {
+      border-right: 0;
+      border-bottom: 1px solid $light-gray;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &.nested {
+      background: #fff;
+      border-width: 1px 0 0 0;
+    }
+    > li:first-child > a {
+      border-radius: $global-radius $global-radius 0 0;
+    }
+    > li:last-child > a {
+      border-radius: 0 0 $global-radius $global-radius;
+    }
+  }
+}
+
+.menu-icon::after {
+  height: 1px;
+}
+
+.unstyled-menu {
+  @include menu-base;
+}
+
+// 10. Orbit
+// ---------
+
+@media screen {
+  .orbit * {
+    outline: none;
+  }
+}
+.orbit {
+  .orbit-previous, .orbit-next {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+  }
+  &:hover {
+    .orbit-previous, .orbit-next {
+      background: transparent;
+      opacity: 0.7;
+      &:hover {
+        background: transparent;
+        opacity: 1;
+      }
+    }
+  }
+  &.bullets-inside {
+    .orbit-caption {
+      padding-bottom: 2.5rem;
+    }
+    .orbit-bullets {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 0;
+      button {
+        background-color:#fff;
+        opacity: 0.35;
+        transition: opacity 0.3s ease-out;
+        &.is-active {
+          opacity: 0.9;
+          &:hover {
+            opacity: 0.9;
+          }
+        }
+        &:hover {
+          opacity: 0.25;
+        }
+      }
+    }
+  }
+}
+
+// 11. Switch
+// ---------
+
+.switch {
+  .switch-paddle {
+    border-radius: 1rem;
+    &::after {
+      border-radius: 0.75rem;
+    }
+  }
+  &.tiny {
+    .switch-paddle {
+      border-radius: 0.75rem;
+      &::after {
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  &.small {
+    .switch-paddle {
+      border-radius: 0.875rem;
+      &::after {
+        border-radius: 0.625rem;
+      }
+    }
+  }
+  &.large {
+    .switch-paddle {
+      border-radius: 1.25rem;
+      &::after {
+        border-radius: 1.25rem;
+      }
+    }
+  }
+}
+
+// 12. Table
+// ---------
+
+table {
+  tbody tr {
+    &:nth-child(even) {
+      background: none;
+    }
+    &.primary {
+      background: lighten($primary-color, +35%);
+    }
+    &.success {
+      background: lighten($success-color, +35%);
+    }
+    &.warning {
+      background: lighten($warning-color, +35%);
+    }
+    &.alert {
+      background: lighten($alert-color, +30%);
+    }
+  }
+}
+
+// 13. Tabs
+// ---------
+
+.tabs {
+  border-width: 0 0 1px 0;
+  .tabs-title {
+    border-top-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
+    > a {
+      font-size: 1rem;
+      border-radius: $global-radius $global-radius 0 0;
+    }
+    &.is-active {
+      > a {
+        color: $dark-gray;
+      }
+      border: 1px solid $light-gray;
+      border-bottom-width: 0;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.tabs-content {
+  border-radius: 0 0 $global-radius $global-radius;
+}
+
+// 14. Top Bar
+// ---------
+
+.title-bar {
+  @include sd-linear-gradient($primary-color, $gradient-primary-color);
+  border-bottom: 1px solid darken($primary-color, 15%);
+}
+
+.top-bar {
+  color: #fff;
+  border-bottom: 1px solid darken($primary-color, 15%);
+  @include sd-linear-gradient($primary-color, $gradient-primary-color);
+  ul {
+    background: transparent;
+  }
+  .top-bar-inner {
+    padding: 0.3rem 0 0.2rem 1rem;
+  }
+  .top-bar-text {
+    padding: 0;
+    @include breakpoint(medium up) {
+      line-height: 2.5rem;
+    }
+  }
+  .menu {
+    border: 0;
+    border-radius: 0;
+    * {
+      outline: none;
+    }
+    > li {
+      border-right: 0;
+      a {
+        color: #fff;
+        padding: 1rem;
+        &:hover {
+          background: darken($primary-color, 12%);
+        }
+      }
+      &.menu-text {
+        padding:1rem;
+      }
+      &:first-child > a {
+        border-radius: 0;
+      }
+      &:last-child > a {
+        border-radius: 0;
+      }
+      &.active > a {
+        background: darken($primary-color, 12%);
+      }
+    }
+    &.dropdown {
+      .submenu {
+        &.first-sub {
+          left: 0;
+        }
+        background:$gradient-primary-color;
+        border: 1px solid darken($primary-color, 15%);
+        li {
+          border-color: darken($primary-color, 15%);
+        }
+      }
+      .has-submenu.is-down-arrow > a::after,
+      >li.is-dropdown-submenu-parent>a:after {
+        border-color: $white transparent transparent;
+      }
+      .has-submenu.is-right-arrow > a::after {
+        border-color: transparent transparent transparent $white;
+      }
+    }
+  }
+  input, button.white {
+    border: 0;
+    display: inline-block;
+    margin-bottom: 0;
+
+  }
+  input {
+    margin-right: 2rem;
+    &:active, &:focus {
+      border: 0;
+    }
+  }
+}
