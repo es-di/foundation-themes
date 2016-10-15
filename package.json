@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --progress --hide-modules --config .meta/webpack.dev.config.js",
     "build": "webpack --progress --hide-modules  --display-error-details --config .meta/webpack.prod.config.js",
-    "server": "webpack-dev-server --hide-modules --inline --display-error-details --config .meta/webpack.dev.config.js"
+    "start": "webpack-dev-server --hide-modules --inline --display-error-details --config .meta/webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,21 +26,22 @@
   },
   "homepage": "https://github.com/es-di/foundation-themes#readme",
   "dependencies": {
-    "foundation-sites": "^6.2.3",
-    "jquery": "^2.2.0",
-    "motion-ui": "^1.2.2",
-    "what-input": "^4.0.1"
-  },
-  "devDependencies": {
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "foundation-sites": "^6.2.3",
+    "jquery": "^2.2.0",
+    "motion-ui": "^1.2.2",
     "node-sass": "^3.10.0",
     "postcss-loader": "^0.13.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.16.1"
+    "what-input": "^4.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.16.1",
+    "yarn": "^0.15.1"
   }
 }
