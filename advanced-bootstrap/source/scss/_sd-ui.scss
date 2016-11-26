@@ -1,0 +1,682 @@
+//  SD UI Advanced Bootstrap Theme (Foundation)
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   0. Mixins & additional variables
+//   1. Custom Classes
+//   2. Typography
+//   3. Accordion
+//   4. Breadcrumbs
+//   5. Buttons
+//   6. Callout
+//   7. Drilldown
+//   8. Dropdown Menu
+//   9. Forms
+//   10. Menu
+//   11. Orbit
+//   12. Pagination
+//   13. Switch
+//   14. Table
+//   15. Tabs
+//   16. Top Bar
+
+// 0. Mixins & additional variables
+// ---------
+
+$info-color: #46b8da;
+$blockquote-bg: #f9f9f9;
+
+
+// 1. Custom Classes
+// ---------
+
+@media screen {
+  * {
+    outline: none;
+  }
+}
+
+.highlighted {
+  color: $primary-color;
+}
+
+
+// 2. Typography
+// ---------
+
+body {
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-size: rem-calc(14);
+}
+
+blockquote {
+  background: $blockquote-bg;
+}
+
+code {
+  border-radius: $global-radius;
+}
+
+p {
+  &.primary {
+    color: $primary-color;
+  }
+  &.secondary {
+    color: $secondary-color;
+  }
+  &.success {
+    color: $success-color;
+  }
+  &.warning {
+    color: $warning-color;
+  }
+  &.alert {
+    color: $alert-color;
+  }
+
+}
+
+dl {
+  dd {
+    margin-bottom: $paragraph-margin-bottom;
+  }
+}
+
+.subheader {
+  font-weight: normal;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// 3. Accordion
+// ---------
+
+.accordion {
+  border-bottom-width: 0;
+  .accordion-item {
+    background: $white;
+    &.is-active {
+      background: #fafdff;
+      .accordion-title {
+        color: $black;
+      }
+    }
+  }
+  .accordion-content {
+    color: $body-font-color;
+  }
+  :last-child > .accordion-title {
+    border-bottom-width: 1px;
+  }
+  .accordion-title {
+    font-size: 1rem;
+  }
+}
+
+// 4. Breadcrumbs
+// ---------
+
+.breadcrumbs {
+  padding: 0.5rem rem-calc(15);
+  border-radius: $global-radius;
+  border-width: 0;
+  background: #f5f5f5;
+  font-size: rem-calc(14);
+  line-height: rem-calc(20);
+  li {
+    color: #777;
+  }
+}
+
+// 5. Buttons
+// ---------
+
+.button {
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: rem-calc(20);
+  &.primary {
+    background: $primary-color;
+    border-color: darken($primary-color, +8%);
+    color: #fff;
+    &:hover, &:focus {
+      color: #fff;
+    }
+  }
+  &.white {
+    @include button-style($white, scale-color($white, $lightness: -3%), #333333);
+    border: 1px solid $light-gray;
+    font-weight: normal;
+  }
+  &.dark {
+    @include button-style($dark-gray, scale-color($dark-gray, $lightness: -8%), $white);
+    border-color: darken($dark-gray,5%);
+  }
+  &.info {
+    color: $white;
+    background: $info-color;
+    border-color: darken($info-color, +8%);
+    &:hover, &:focus {
+      color: $white;
+      background: #31b0d5;
+      border-color: #269abc;
+    }
+  }
+  &.success {
+    color: $white;
+    border-color: #4cae4c;
+    &:hover, &:focus {
+      color: $white;
+      border-color: darken(#4cae4c, +4%);
+    }
+  }
+  &.warning {
+    color: $white;
+    border-color: #eea236;
+    &:hover, &:focus {
+      color: $white;
+      border-color: darken(#eea236, +4%);
+    }
+  }
+  &.alert {
+    color: $white;
+    border-color: #d43f3a;
+    &:hover, &:focus {
+      color: $white;
+      border-color: darken(#d43f3a, +4%);
+    }
+  }
+  &.hollow {
+    background: transparent;
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.button.dropdown {
+  &:after {
+    border-color: #333 transparent transparent;
+    top: .6em;
+  }
+}
+
+
+// 6. Callout
+// ---------
+
+.callout {
+  color: $body-font-color;
+  &.info, &.primary {
+    border-color: #bce8f1;
+    background: #d9edf7;
+    color: #31708f;
+    a {
+      color: darken(#31708f, +7%);
+    }
+  }
+  &.success {
+    border-color: #d6e9c6;
+    background: #dff0d8;
+    color: #3c763d;
+    a {
+      color: darken(#3c763d, +7%);
+    }
+  }
+  &.warning {
+    border-color: #faebcc;
+    background: #fcf8e3;
+    color: #8a6d3b;
+    a {
+      color: darken(#8a6d3b, +7%);
+    }
+  }
+  &.alert {
+    border-color: #ebccd1;
+    background: #f2dede;
+    color: #a94442;
+    a {
+      color: darken(#a94442, +7%);
+    }
+  }
+}
+
+// 7. Drilldown
+// ---------
+
+.is-drilldown {
+  border-bottom: 1px solid $light-gray;
+  border-radius: 0 0 $global-radius $global-radius;
+}
+
+.js-drilldown-back::before,
+.js-drilldown-back>a:before {
+  margin-top: -0.25rem;
+  padding: 0;
+}
+
+// 8. Dropdown Menu
+// ---------
+
+.dropdown.menu {
+  .has-submenu.is-down-arrow > a::after,
+  >li.is-dropdown-submenu-parent>a:after {
+    right: 8px;
+  }
+  .submenu {
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  &.vertical > li.opens-right > .is-dropdown-submenu {
+    right: auto;
+    left: 100%;
+    top:-1px;
+  }
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent #777;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
+  border-color: transparent transparent transparent #777;
+  border-width: 4px;
+}
+
+.is-dropdown-submenu .is-dropdown-submenu-parent.opens-left>a:after {
+  border-color: transparent #777 transparent transparent;
+}
+
+
+.input-group {
+  .input-group-label {
+    border-radius: $global-radius 0 0 $global-radius;
+  }
+  .input-group-field {
+    border-radius: 0;
+  }
+  .input-group-button .button {
+    border-radius: 0 $global-radius $global-radius 0;
+    margin: 0;
+  }
+}
+
+// 9. Forms
+// ---------
+select, .input-group-field {
+  height: rem-calc(34) !important;
+}
+
+[type=color], [type=date], [type=datetime-local], [type=datetime],
+[type=email], [type=month], [type=number], [type=password],
+[type=search], [type=tel], [type=text],
+[type=time], [type=url], [type=week] {
+    height: rem-calc(34) !important;
+}
+
+// 10. Menu
+// ---------
+
+.menu {
+  border: 1px solid $light-gray;
+  border-radius: $global-radius;
+  * {
+    outline: none;
+  }
+  > li {
+    border-right: 1px solid $light-gray;
+    &:last-child {
+      border-bottom: none;
+      border-right: none;
+    }
+    a {
+      color: #333;
+    }
+    > a > i {
+      vertical-align: top;
+    }
+    a:hover {
+      background: lighten($light-gray, 5%);
+    }
+    &:first-child > a {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+    &:last-child > a {
+      border-radius: 0 $global-radius $global-radius 0;
+    }
+    &.active > a {
+      background: lighten($light-gray, 5%);
+      color: $black;
+    }
+  }
+  &.vertical {
+    //display: block;
+    > li {
+      border-right: 0;
+      border-bottom: 1px solid $light-gray;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &.nested {
+      background: #fff;
+      border-width: 1px 0 0 0;
+    }
+    > li:first-child > a {
+      border-radius: $global-radius $global-radius 0 0;
+    }
+    > li:last-child > a {
+      border-radius: 0 0 $global-radius $global-radius;
+    }
+  }
+}
+
+.menu-icon::after {
+  height: 1px;
+}
+
+.unstyled-menu {
+  @include menu-base;
+}
+
+// 11. Orbit
+// ---------
+
+@media screen {
+  .orbit * {
+    outline: none;
+  }
+}
+.orbit {
+  .orbit-previous, .orbit-next {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+    font-size: rem-calc(40);
+  }
+  &:hover {
+    .orbit-previous, .orbit-next {
+      background: transparent;
+      opacity: 0.7;
+      &:hover {
+        background: transparent;
+        opacity: 1;
+      }
+    }
+  }
+  &.bullets-inside {
+    .orbit-caption {
+      padding-bottom: 2.5rem;
+    }
+    .orbit-bullets {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 0;
+      button {
+        background: transparent;
+        border: 1px solid $white;
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
+        &.is-active {
+          opacity: 1;
+          background-color:#fff;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+// 12. Pagination
+// ---------
+.pagination {
+  border: 1px solid #ddd;
+  border-radius:$global-radius;
+  display: inline-block;
+  li {
+    border-radius: 0;
+    margin-right: -4px;
+    border-right: 1px solid #ddd;
+    &:last-child {
+      border: 0;
+      margin-right: -1px;
+    }
+    &.pagination-previous {
+      border-top-left-radius: $global-radius;
+      border-bottom-left-radius: $global-radius;
+    }
+    &.pagination-next {
+      border-top-right-radius: $global-radius;
+      border-bottom-right-radius: $global-radius;
+    }
+    a {
+      border-radius: 0;
+      padding: rem-calc(5) rem-calc(13);
+    }
+    &.current, &.disabled {
+      padding: rem-calc(5) rem-calc(13);
+    }
+    &.current {
+      background: $primary-color;
+      color: $white;
+      margin-left: -1px;
+      border:0;
+      &:hover {
+        background: $primary-color;
+        color: $white;
+      }
+    }
+    &.ellipsis {
+      border: 0;
+    }
+  }
+
+}
+
+// 13. Switch
+// ---------
+
+.switch {
+  .switch-paddle {
+    border-radius: 1rem;
+    &::after {
+      border-radius: 0.75rem;
+    }
+  }
+  &.tiny {
+    .switch-paddle {
+      border-radius: 0.75rem;
+      &::after {
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  &.small {
+    .switch-paddle {
+      border-radius: 0.875rem;
+      &::after {
+        border-radius: 0.625rem;
+      }
+    }
+  }
+  &.large {
+    .switch-paddle {
+      border-radius: 1.25rem;
+      &::after {
+        border-radius: 1.25rem;
+      }
+    }
+  }
+}
+
+// 14. Table
+// ---------
+
+table {
+  thead {
+    border-bottom: 2px solid #f2f2f2;
+  }
+  tbody tr {
+    border: 1px solid #f2f2f2;
+    &:nth-child(even) {
+      background: none;
+    }
+    &.primary {
+      background: #d9edf7;
+    }
+    &.success {
+      background: #dff0d8;
+    }
+    &.warning {
+      background: #fcf8e3;
+    }
+    &.alert {
+      background: #f2dede;
+    }
+  }
+}
+
+// 15. Tabs
+// ---------
+
+.tabs {
+  border-width: 0 0 1px 0;
+  .tabs-title {
+    border-top-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
+    > a {
+      padding: 1rem 1.5rem;
+      font-size: rem-calc(14);
+      border-radius: $global-radius $global-radius 0 0;
+    }
+    &.is-active {
+      > a {
+        color: $dark-gray;
+      }
+      border: 1px solid $light-gray;
+      border-bottom-width: 0;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.tabs-content {
+  border-radius: 0 0 $global-radius $global-radius;
+  border: 0;
+}
+
+// 16. Top Bar
+// ---------
+
+.title-bar {
+  border-bottom: 1px solid #e7e7e7;
+  color: #777;
+  background: #f8f8f8;
+}
+
+.top-bar {
+  color: #777;
+  border-bottom: 1px solid #e7e7e7;
+  ul {
+    background: transparent;
+  }
+  .top-bar-inner {
+    padding: 0.5rem 0 0 1rem;
+  }
+  .top-bar-text {
+    padding: 0;
+    @include breakpoint(medium up) {
+      line-height: rem-calc(34);
+    }
+  }
+  .menu {
+    border: 0;
+    border-radius: 0;
+    * {
+      outline: none;
+    }
+    > li {
+      border-right: 0;
+      a {
+        color: #777;
+        padding: rem-calc(17);
+        font-size: rem-calc(14);
+        &:hover {
+          color: #555;
+        }
+      }
+      &.menu-text {
+        padding:rem-calc(15);
+        font-size: rem-calc(18);
+        font-weight: normal;
+      }
+      &:first-child > a {
+        border-radius: 0;
+      }
+      &:last-child > a {
+        border-radius: 0;
+      }
+      &.active > a {
+        background: #e7e7e7;
+      }
+    }
+    &.dropdown {
+      .submenu {
+        &.first-sub {
+          left: 0;
+        }
+        background:$white;
+        border: 1px solid rgba(0,0,0,.15);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border-bottom-left-radius: $global-radius;
+        border-bottom-right-radius: $global-radius;
+        padding: rem-calc(5) 0;
+        a {
+          color: #333;
+          padding: rem-calc(3) rem-calc(20);
+          line-height: rem-calc(20);
+        }
+        li {
+          border: 0;
+        }
+      }
+      .has-submenu.is-down-arrow > a::after,
+      >li.is-dropdown-submenu-parent>a:after {
+        border-color: #777 transparent transparent;
+        border-width: 4px;
+        margin-top: -2px;
+      }
+      .has-submenu.is-right-arrow > a::after {
+        border-color: transparent transparent transparent #777;
+      }
+    }
+  }
+  input, button.white {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  input {
+    margin-right: 2rem;
+  }
+  .button {
+    margin-left: 0.5rem;
+  }
+}
+
+.menu-icon:after {
+  background: #777;
+  box-shadow: 0 7px 0 #777,0 14px 0 #777;
+}
+
+.title-bar {
+  .title-bar-title {
+    font-weight: normal;
+  }
+}
